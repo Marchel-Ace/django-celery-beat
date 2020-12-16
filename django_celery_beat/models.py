@@ -147,7 +147,11 @@ class IntervalSchedule(models.Model):
     MICROSECONDS = MICROSECONDS
 
     PERIOD_CHOICES = PERIOD_CHOICES
-    name = models.CharField(max_length=120, unique=True, blank=False)
+    name = models.CharField(
+        max_length=200,
+        verbose_name=_('Name'),
+        help_text=_('Short Name For This IntervalSchedule'),
+    )
     every = models.IntegerField(
         null=False,
         verbose_name=_('Number of Periods'),
@@ -255,7 +259,11 @@ class CrontabSchedule(models.Model):
     # 4 chars for each value (what we save on 0-9 accomodates the []).
     # We leave the other fields at their historical length.
     #
-    name = models.CharField(max_length=120, unique=True, blank=False)
+    name = models.CharField(
+        max_length=200,
+        verbose_name=_('Name'),
+        help_text=_('Short Name For This Crontab'),
+    )
     minute = models.CharField(
         max_length=60 * 4, default='*',
         verbose_name=_('Minute(s)'),
