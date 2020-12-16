@@ -198,7 +198,7 @@ class IntervalSchedule(models.Model):
             if period == self.period:
                 readable_period = _readable_period.lower()
                 break
-        return _('every {} {}').format(self.every, readable_period)
+        return _('{} every {} {}').format(self.name, self.every, readable_period)
 
     @property
     def period_singular(self):
@@ -311,7 +311,8 @@ class CrontabSchedule(models.Model):
                     'day_of_week', 'hour', 'minute', 'timezone']
 
     def __str__(self):
-        return '{0} {1} {2} {3} {4} (m/h/dM/MY/d) {5}'.format(
+        return '{0} {1} {2} {3} {4} {5} (m/h/dM/MY/d) {6}'.format(
+            self.name,
             cronexp(self.minute), cronexp(self.hour),
             cronexp(self.day_of_month), cronexp(self.month_of_year),
             cronexp(self.day_of_week), str(self.timezone)
