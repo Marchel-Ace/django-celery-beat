@@ -151,6 +151,7 @@ class IntervalSchedule(models.Model):
         max_length=200,
         verbose_name=_('Name'),
         help_text=_('Short Name For This IntervalSchedule'),
+        default=''
     )
     every = models.IntegerField(
         null=False,
@@ -263,6 +264,7 @@ class CrontabSchedule(models.Model):
         max_length=200,
         verbose_name=_('Name'),
         help_text=_('Short Name For This Crontab'),
+        default=''
     )
     minute = models.CharField(
         max_length=60 * 4, default='*',
